@@ -1,0 +1,88 @@
+\documentclass{thesis}
+
+\usepackage[dutch,english]{babel}
+
+\usepackage[svgnames]{xcolor}
+\definecolor{papergray}{HTML}{34495e}
+\definecolor{paperblue}{HTML}{3498db}
+\definecolor{lightgray}{gray}{0.9}
+
+\usepackage{graphicx, booktabs, rotating, subfigure, 
+            array, parallel, csquotes, colortbl, 
+            makeidx, tabularx, amsmath, tikz
+}
+
+\usepackage[super]{nth}
+\usetikzlibrary{decorations.text}
+
+\usepackage[notes,natbib,maxcitenames=2]{biblatex-chicago}
+\addbibresource{main.bib}
+
+\usepackage[hang,flushmargin,norule,bottom,multiple]{footmisc} 
+
+\makeatletter
+\renewcommand\@makefntext[1]{% 
+    \@thefnmark.~#1}
+\makeatother
+
+\DefineBibliographyStrings{english}{%
+  references = {\uppersf{Bibliography}},
+}
+
+\newcommand*{\oldstyle}{\normalsize\fontfamily{bch}\selectfont}
+\newcommand*{\intstyle}{\normalsize\bf\fontfamily{ppl}\selectfont}
+\newcommand*{\newstyle}{\normalsize\fontfamily{phv}\selectfont}
+
+\newcommand*{\argmin}{\operatornamewithlimits{arg\,min}\limits}
+\newcommand*{\argmax}{\operatornamewithlimits{arg\,max}\limits}
+\DeclareMathOperator*{\argsort}{arg\,sort}
+
+% new commands
+\usepackage{mathtools,dcolumn}
+\newcommand\p[1]{\phantom{#1}}
+\newcommand\dnum[1]{%
+    \begin{tabular}{@{}D{.}{.}{3.1}@{}}
+      #1
+    \end{tabular}}
+
+% document details
+\author{Folgert Karsdorp}
+\title{Retelling Stories}
+\date{}
+
+\begin{document}
+\frontmatter
+\raggedbottom
+\include{titlepage}
+\include{chapters/copyright}
+\include{chapters/titelpagina}
+\include{chapters/promotors}
+\cleardoublepage
+\include{chapters/quote}
+\setcounter{tocdepth}{0}
+\tableofcontents
+
+\include{chapters/preface}
+
+\mainmatter
+\include{chapters/introduction}
+\include{chapters/motif-classification}
+\include{chapters/animacy}
+\include{chapters/red-riding-hood}
+\include{chapters/story-networks}
+\include{chapters/conclusion}
+
+\backmatter
+
+\addcontentsline{toc}{chapter}{Bibliography}
+\printbibheading
+\printbibliography[keyword=primary, heading=subbibliography, title={Primary Sources}]
+\printbibliography[keyword=secondary, heading=subbibliography, title={Secondary Sources}]
+
+\include{chapters/samenvatting}
+\addcontentsline{toc}{chapter}{Samenvatting}
+\include{chapters/summary}
+\addcontentsline{toc}{chapter}{Summary}
+\include{chapters/cv}
+
+\end{document}
